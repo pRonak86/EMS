@@ -1,0 +1,53 @@
+{% extends 'adminDashboard/base.html' %}
+{% load static %}
+{% block content %}
+
+
+            <div class="page-wrapper">
+                <div class="content container-fluid">
+
+	                <div class="row">
+						<div class="col-md-10">
+							<div class="panel panel-table">
+								<div class="panel-heading">
+									<h3 class="panel-title">Invoices</h3>
+								</div>
+								<div class="panel-body">
+									<div class="table-responsive">
+										<table class="table table-striped custom-table m-b-0">
+											<thead>
+												<tr>
+													<th>Employee Id</th>
+													<th>Manager Id</th>
+													<th>Login Time</th>
+													<th>Logout Time</th>
+                                                    <th>Work Description</th>
+													<th>Status</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td><a href="">{{s.employeeId}}</a></td>
+													<td>
+														<h2><a href="#">{{s.managerId}}</a></h2>
+													</td>
+													<td>{{s.loginTime}}</td>
+													<td>{{s.logoutTime}}</td>
+                                                    <td>{{s.workDescription}}</td>
+													<td>
+														<span class="label label-warning-border">Partially Paid</span>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<div class="panel-footer">
+									<a href="" class="text-primary"></a>
+								</div>
+							</div>
+						</div>
+    </div>
+                </div>
+
+{% endblock %}

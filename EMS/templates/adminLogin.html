@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from dreamguys.co.in/preadmin/hr/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 15 Mar 2021 11:05:25 GMT -->
+<head>
+           <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+        <link rel="shortcut icon" type="image/x-icon" href="{% static 'adminStatic/assets/img/favicon.png' %}">
+        <title>Admin Dashboard </title>
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{% static 'adminStatic/assets/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'adminStatic/assets/css/font-awesome.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'adminStatic/assets/css/line-awesome.min.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'adminStatic/assets/plugins/morris/morris.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'adminStatic/assets/css/style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'adminStatic/assets/css/fullcalendar.min.css' %}">
+
+	<link rel="stylesheet" href="{% static 'adminStatic/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css' %}">
+    <link rel="stylesheet" href="{% static 'adminStatic/plugins/datatables-responsive/css/responsive.bootstrap4.min.css' %}">
+    <link rel="stylesheet" href="{% static 'adminStatic/plugins/datatables-buttons/css/buttons.bootstrap4.min.css' %}">
+	<!--[if lt IE 9]>
+		<script src="{% static 'adminStatic/assets/js/html5shiv.min.js' %}"></script>
+			<script src="{% static 'adminStatic/assets/js/respond.min.js' %}"></script>
+			<![endif]-->
+    </head>
+    <body>
+        <div class="main-wrapper">
+			<div class="account-page">
+				<a href="job-list.html" class="btn btn-primary apply-btn">Apply Job</a>
+				<div class="container">
+					<h3 class="account-title">Admin Login</h3>
+					<div class="account-box">
+						<div class="account-wrapper">
+										{{msg}}
+							<div class="account-logo">
+								<a href="index.html"><img src="{% static 'adminStatic/assets/img/logo.png' %}" alt="Focus Technologies"></a>
+							</div>
+							<form action="/loginAdmin/" method="post">
+								{% csrf_token %}
+								<div class="form-group form-focus">
+									<label class="control-label">Username or Email</label>
+									<input class="form-control floating" type="text" name="email">
+								</div>
+								<div class="form-group form-focus">
+									<label class="control-label">Password</label>
+									<input class="form-control floating" type="password" name="password">
+								</div>
+								<div class="form-group text-center">
+									<button class="btn btn-primary btn-block account-btn" type="submit">Login</button>
+								</div>
+								</form>
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+		<div class="sidebar-overlay" data-reff="#sidebar"></div>
+        <script type="text/javascript" src="{% static 'adminStatic/assets/js/jquery-3.2.1.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'adminStatic/assets/js/bootstrap.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'adminStatic/assets/js/app.js' %}"></script>
+    </body>
+
+<!-- Mirrored from dreamguys.co.in/preadmin/hr/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 15 Mar 2021 11:05:25 GMT -->
+</html>

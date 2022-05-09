@@ -1,0 +1,99 @@
+{% extends 'adminDashboard/base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+     	<div class="row">
+
+            <div class="col-xs-4">
+                <h4 class="page-title">Employee</h4>
+            </div>
+            <hr>
+        </div>
+					<form action="/searchReportEmployeeFilter/" method="post">
+						{% csrf_token %}
+					<div class="row filter-row">
+						<div class="col-sm-3 col-xs-6">
+							<div class="form-group form-focus select-focus">
+								<label class="control-label">Date</label>
+								<input type="date" class="form-control floating" name="date1" />
+							</div>
+						</div>
+
+						<div class="col-sm-3 col-xs-6">
+							<div class="form-group form-focus select-focus">
+								<label class="control-label">Date</label>
+								<input type="date" class="form-control floating" name="date2" />
+							</div>
+						</div>
+						<div class="col-sm-2 col-xs-6">
+							<div class="form-group form-focus select-focus">
+								<label class="control-label">Status</label>
+								<select name="status"  class="form-control floating">
+									<option>Select Status</option>
+									<option>Active</option>
+									<option>Deactive</option>
+								</select>
+
+							</div>
+						</div>
+
+						<div class="col-sm-3 col-xs-6">
+						<input type="submit" class="btn btn-success btn-block" value="Search" />
+						</div>
+                    </div>
+					</form>
+
+						<div class="col-md-12">
+							<div class="table-responsive">
+								<table class="table table-striped custom-table m-b-0 datatable">
+									<thead>
+										<tr>
+											<th style="width:20%;">Full Name</th>
+											<th>Contact No</th>
+											<th>Gender</th>
+											<th>DOB</th>
+											<th>Address</th>
+											<th>State</th>
+                                            <th>Qualification</th>
+											<th class="text-right">Actions</th>
+										</tr>
+									</thead>
+									<tbody>
+									{% if r %}
+                                    {% for i in r %}
+									<td>
+										<a href="{% url 'employeeProfile' pk=i.empCode %}" >
+										<img src="{{i.image.url}}" width="40" height="40" alt="" class="avatar">
+										</a>
+										<h2><a href="#">{{i.fname}} {{i.lname}}<span>Web Designer</span></a></h2>
+									</td>
+									<td>{{i.contact }}</td>
+									<td>{{i.gender }}</td>
+									<td>{{i.dob }}</td>
+									<td>{{i.address }}</td>
+									<td>{{i.state }}</td>
+									<td>{{i.qualification }}</td>
+									<td><a href="{% url 'deleteEmployee' pk=i.empCode %}" ><span class="label label-danger-border">Delete</span></a></td>
+									</tr>
+									   {% endfor %}
+                                    {% endif %}
+
+
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+                </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

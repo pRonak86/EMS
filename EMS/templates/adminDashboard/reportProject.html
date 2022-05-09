@@ -1,0 +1,88 @@
+{% extends 'adminDashboard/base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+     	<div class="row">
+
+            <div class="col-xs-4">
+                <h4 class="page-title">Project Report</h4>
+            </div>
+            <hr>
+        </div>
+					<form action="/searchReportProjectFilter/" method="post">
+						{% csrf_token %}
+					<div class="row filter-row">
+						<div class="col-sm-3 col-xs-6">
+							<div class="form-group form-focus select-focus">
+								<label class="control-label">Date</label>
+								<input type="date" class="form-control floating" name="date1" />
+							</div>
+						</div>
+
+						<div class="col-sm-3 col-xs-6">
+							<div class="form-group form-focus select-focus">
+								<label class="control-label">Date</label>
+								<input type="date" class="form-control floating" name="date2" />
+							</div>
+						</div>
+						<div class="col-sm-2 col-xs-6">
+							<div class="form-group form-focus select-focus">
+								<label class="control-label">Status</label>
+								<select name="status"  class="form-control floating">
+									<option>Select Status</option>
+									<option>Working</option>
+									<option>Completed</option>
+								</select>
+
+							</div>
+						</div>
+
+						<div class="col-sm-3 col-xs-6">
+						<input type="submit" class="btn btn-success btn-block" value="Search" />
+						</div>
+                    </div>
+					</form>
+						<div class="col-md-12">
+							<div class="table-responsive">
+								<table class="table table-striped custom-table m-b-0 datatable">
+									<thead>
+										<tr>
+											<th>Project Id</th>
+											<th>Project Name</th>
+											<th>Created Date</th>
+											<th>Deadline Date</th>
+											<th>Description</th>
+											<th>Cost</th>
+											<th>Status</th>
+                                		</tr>
+									</thead>
+									<tbody>
+									{% for i in r%}
+											<tr>
+												<td>{{i.projectId}}</td>
+												<td>{{i.projectName}}</td>
+												<td>{{i.createdDate}}</td>
+												<td>{{i.deadlineDate}}</td>
+												<td>{{i.projectDescription}}</td>
+												<td>{{i.cost}}</td>
+												<td>{{i.status}}</td>
+											</tr>
+									{% endfor %}
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+                </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

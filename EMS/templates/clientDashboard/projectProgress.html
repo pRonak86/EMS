@@ -1,0 +1,59 @@
+{% extends 'clientDashboard/base.html' %}
+{% load static %}
+{% block content %}
+
+<main class="content">
+				<div class="container-fluid p-0">
+
+					<div class="col-md-8 col-xl-9">
+							<div class="card">
+								<div class="card-header">
+  									<h4>Recent Activity</h4>
+									<hr>
+									<h2>{{pName.projectName}}</h2>
+								</div>
+								{% if not p %}
+								<div class="alert alert-danger alert-dismissible" role="alert">
+											<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              									  <span aria-hidden="true">&times;</span>
+											</button>
+											<div class="alert-icon">
+												<i class="far fa-fw fa-bell"></i>
+											</div>
+											<div class="alert-message">
+												<strong>Hello there!</strong> {{msg}}
+											</div>
+								</div>
+								{% endif %}
+
+
+									<div class="alert alert-primary" role="alert">
+                                    </div>
+
+								<div class="card-body h-100">
+									{% if p%}
+									{% for i in p %}
+									   <div class="post">
+											  <div class="user-block">
+												<img width="60" height="60" class="rounded-circle mr-2" src="{{i.image.url}}" alt="user image">
+												<span class="username">
+												  <a href="#">{{i.employeeName}}</a>
+												</span>
+												<span class="description">Shared publicly - {{i.date}}</span>
+											  </div>
+										      <p>
+												  {{i.workDescription}}
+											  </p>
+											  <p>
+												<a href="#" class="link-black text-sm"><i class="fas fa-link mr-1"></i> Demo File 1 v2</a>
+											  </p>
+									   </div>
+									{% endfor %}
+									{% endif %}
+								</div>
+							</div>
+					</div>
+				</div>
+	</div>
+</main>
+{% endblock %}

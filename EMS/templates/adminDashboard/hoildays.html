@@ -1,0 +1,149 @@
+{% extends 'adminDashboard/base.html' %}
+{% load static %}
+{% block content %}
+
+   <div class="page-wrapper">
+                <div class="content container-fluid">
+					<div class="row">
+						<div class="col-sm-8">
+							<h4 class="page-title">Holidays 2021</h4>
+						</div>
+						<div class="col-sm-4 text-right m-b-30">
+							<a href="#" class="btn btn-primary rounded" data-toggle="modal" data-target="#add_holiday"><i class="fa fa-plus"></i> Add New Holiday</a>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="table-responsive">
+								<table class="table table-striped custom-table m-b-0">
+									<thead>
+										<tr>
+											<th>#</th>
+											<th>Title </th>
+											<th>Holiday Date</th>
+											<th>Day</th>
+                                            <th>Descriptions</th>
+											<th class="text-right">Action</th>
+										</tr>
+									</thead>
+									<tbody>
+                                    {% if e1 %}
+                                    {% for i in e1 %}
+
+										<tr class="holiday-upcoming">
+                                            <td>{{i.hoildayId}}</td>
+								        	<td>{{i.holidayName}}</td>
+									        <td>{{i.hoildayDate }}</td>
+									        <td>{{i.hoildayDay }}</td>
+								             <td>{{i.hoildayDescription }}</td>
+											<td class="text-right">
+												<div class="dropdown">
+													<a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+													<ul class="dropdown-menu pull-right">
+														<li><a href="#" data-toggle="modal" data-target="#edit_holiday" title="Edit"><i class="fa fa-pencil m-r-5"></i> Edit</a></li>
+														<li><a href="#" data-toggle="modal" data-target="#delete_holiday" title="Delete"><i class="fa fa-trash-o m-r-5"></i> Delete</a></li>
+													</ul>
+												</div>
+											</td>
+										</tr>
+                                       {% endfor %}
+                                    {% endif %}
+
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+                </div>
+
+	<div id="delete_holiday" class="modal custom-modal fade" role="dialog">
+				<div class="modal-dialog">
+					<div class="modal-content modal-md">
+						<div class="modal-header">
+							<h4 class="modal-title">Delete Holiday</h4>
+						</div>
+						<form>
+							<div class="modal-body card-box">
+								<p>Are you sure want to delete this?</p>
+								<div class="m-t-20 text-left">
+									<a href="#" class="btn btn-default" data-dismiss="modal">Close</a>
+									<button type="submit" class="btn btn-danger">Delete</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div id="add_holiday" class="modal custom-modal fade" role="dialog">
+				<div class="modal-dialog">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<div class="modal-content modal-md">
+						<div class="modal-header">
+							<h4 class="modal-title">Add Holiday</h4>
+						</div>
+						<div class="modal-body">
+							<form action="/saveHoilday/" method="post">
+								{% csrf_token %}
+								<div class="form-group">
+									<label>Holiday Name <span class="text-danger">*</span></label>
+									<input class="form-control" name="holidayName" required="" type="text">
+								</div>
+								<div class="form-group">
+									<label>Holiday Date <span class="text-danger">*</span></label>
+									<div class=""><input class="form-control" name="hoildayDate" type="date"></div>
+								</div>
+                                <div class="form-group">
+									<label>Holiday Day <span class="text-danger">*</span></label>
+									<div class=""><input class="form-control" type="text" name="hoildayDay"></div>
+								</div>
+								<div class="form-group">
+									<label>Holiday Description <span class="text-danger">*</span></label>
+									<div class=""><input class="form-control " type="text" name="hoildayDescription"></div>
+								</div>
+
+								<div class="m-t-20 text-center">
+									<button class="btn btn-primary">Create Holiday</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="edit_holiday" class="modal custom-modal fade" role="dialog">
+				<div class="modal-dialog">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<div class="modal-content modal-md">
+						<div class="modal-header">
+							<h4 class="modal-title">Edit Holiday</h4>
+						</div>
+						<div class="modal-body">
+							<form>
+								<div class="form-group">
+									<label>Holiday Name <span class="text-danger">*</span></label>
+									<input class="form-control" required="" type="text">
+								</div>
+								<div class="form-group">
+									<label>Holiday Date <span class="text-danger">*</span></label>
+									<div class=""><input class="form-control" type="date"></div>
+								</div>
+                                <div class="form-group">
+									<label>Holiday Day <span class="text-danger">*</span></label>
+									<div class=""><input class="form-control" type="text"></div>
+								</div>
+								<div class="form-group">
+									<label>Holiday Description <span class="text-danger">*</span></label>
+									<div class=""><input class="form-control " type="text"></div>
+								</div>
+
+								<div class="m-t-20 text-center">
+									<button class="btn btn-primary">Update Holiday</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'adminDashboard/base.html' %}
+{% load static %}
+{% block content %}
+
+ <div class="page-wrapper">
+                <div class="content container-fluid">
+					<div class="row">
+						<div class="col-xs-4">
+							<h4 class="page-title">Employee Salary</h4>
+						</div>
+					</div>
+			<div class="row">
+						<div class="col-md-12">
+							<div class="table-responsive">
+								<table class="table table-striped custom-table datatable">
+									<thead>
+										<tr>
+											<th style="width:20%;">Employee</th>
+											<th>Employee ID</th>
+											<th>Email</th>
+											<th>Joining Date</th>
+											<th>Qualification</th>
+											<th>Leave Left</th>
+											<th>Payslip</th>
+										</tr>
+									</thead>
+									<tbody>
+									{% for i in e%}
+										<tr>
+											<td>
+												<img src="{{i.image.url}}" width="40" height="40" alt="" class="avatar">
+											<h2><a href="">{{i.fname}} {{i.lname}}</a></h2>
+											</td>
+											<td>{{i.empCode}}</td>
+											<td>{{i.emailId}}</td>
+											<td>{{i.joinDate}}</td>
+											<td>
+												<div class="dropdown">
+													<a class="btn btn-white btn-sm rounded sm" data-toggle="dropdown" aria-expanded="false">{{i.qualification}}</a>
+												</div>
+											</td>
+											<td>{{i.leave}}</td>
+											<td><a class="btn btn-xs btn-primary" href="{% url 'genrateSalary' pk=i.empCode %}">Generate Slip</a></td>
+										</tr>
+									{% endfor %}
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+                </div>
+
+
+
+{% endblock %}

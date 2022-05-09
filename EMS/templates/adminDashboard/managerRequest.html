@@ -1,0 +1,190 @@
+{% extends 'adminDashboard/base.html' %}
+{% load static %}
+{% block content %}
+  <div class="page-wrapper">
+                <div class="content container-fluid">
+					<div class="row">
+                        <h4>Manager Request </h4>
+						<div class="col-md-12">
+							<div class="table-responsive">
+								<table class="table table-striped custom-table m-b-0 datatable">
+									<thead>
+										<tr>
+											<th style="width:20%;">Full Name</th>
+											<th>Contact No</th>
+											<th>Gender</th>
+											<th>DOB</th>
+											<th>Address</th>
+											<th>State</th>
+                                            <th>Qualification</th>
+											<th class="text-center">Status</th>
+										</tr>
+									</thead>
+									<tbody>
+                                    {% if e1 %}
+                                    {% for i in e1 %}
+									<td>
+										<a href="{% url 'managerRequestView' pk=i.managerCode %}" class="avatar">
+											<img src="{{i.image.url}}" width="40" height="40" alt="" class="avatar">
+										</a>
+										<h2><a href="#">{{i.fname}} {{i.lname}}<span>Web Designer</span></a></h2>
+									</td>
+									<td>{{i.contact }}</td>
+									<td>{{i.gender }}</td>
+									<td>{{i.dob }}</td>
+									<td>{{i.address }}</td>
+									<td>{{i.state }}</td>
+									<td>{{i.qualification }}</td>
+									<td> <span class="label label-success-border">{{i.account}}</span></td>
+                                 		</tr>
+									   {% endfor %}
+                                    {% endif %}
+
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+                </div>
+
+	  <div id="delete_asset" class="modal custom-modal fade" role="dialog">
+				<div class="modal-dialog">
+					<div class="modal-content modal-md">
+						<div class="modal-header">
+							<h4 class="modal-title">Delete Manager</h4>
+						</div>
+						<form>
+							<div class="modal-body card-box">
+								<p>Are you sure want to delete this asset?</p>
+								<div class="m-t-20"> <a href="#" class="btn btn-default" data-dismiss="modal">Close</a>
+									<button type="submit" class="btn btn-danger">Delete</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+
+	  <div id="edit_asset" class="modal custom-modal fade" role="dialog">
+				<div class="modal-dialog">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<div class="modal-content modal-md">
+						<div class="modal-header">
+							<h4 class="modal-title">Edit Asset</h4>
+						</div>
+						<div class="modal-body">
+							<form>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Asset Name</label>
+											<input class="form-control" type="text" value="Dell Laptop">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Asset Id</label>
+											<input class="form-control" type="text" value="#AST-0001" readonly>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Purchase Date</label>
+											<input class="form-control datetimepicker" type="text">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Purchase From</label>
+											<input class="form-control" type="text">
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Manufacturer</label>
+											<input class="form-control" type="text">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Model</label>
+											<input class="form-control" type="text">
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Serial Number</label>
+											<input class="form-control" type="text">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Supplier</label>
+											<input class="form-control" type="text">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Condition</label>
+											<input class="form-control" type="text">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Warranty</label>
+											<input class="form-control" type="text" placeholder="In Months">
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Value</label>
+											<input placeholder="$1800" class="form-control" type="text">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Asset User</label>
+											<select class="select">
+												<option>John Doe</option>
+												<option>Richard Miles</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+											<label>Description</label>
+											<textarea class="form-control"></textarea>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Status</label>
+											<select class="select">
+												<option>Pending</option>
+												<option>Approved</option>
+												<option>Deployed</option>
+												<option>Damaged</option>
+											</select>
+										</div>
+									</div>
+								</div>
+								<div class="m-t-20 text-center">
+									<button class="btn btn-primary">Save & Update</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+
+
+{% endblock %}

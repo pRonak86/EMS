@@ -1,0 +1,87 @@
+{% extends 'adminDashboard/base.html' %}
+{% load static %}
+{% block content %}
+   <div class="page-wrapper">
+                <div class="content container-fluid">
+					<div class="row">
+						<div class="col-sm-8">
+							<h4 class="page-title">Client Request</h4>
+						</div>
+					</div>
+					<div class="card-box">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="profile-view">
+									<div class="profile-img-wrap">
+										<div class="profile-img">
+											<a href="#"><img class="avatar" src="{{ct.image.url}}" alt=""></a>
+										</div>
+									</div>
+									<div class="profile-basic">
+										<div class="row">
+											<div class="col-md-5">
+												<div class="profile-info-left">
+													<h3 class="user-name m-t-0 m-b-0">{{ct.fname}} {{ct.lname}}</h3>
+													<small class="text-muted">Web Designer</small>
+													<div class="staff-id">Employee ID : {{ct.clientId}}</div>
+													<div class="staff-msg">
+													<form method="post" action="/assignManagerClient/">
+														{% csrf_token %}
+														<input type="submit" class="btn btn-custom" value="Approved">
+													</div>
+												</div>
+											</div>
+											<div class="col-md-7">
+												<ul class="personal-info">
+													<li>
+														<span class="title">Phone:</span>
+														<span class="text"><a href="#">{{ct.phone}}</a></span>
+													</li>
+													<li>
+														<span class="title">Email:</span>
+														<span class="text"><a href="#">{{ct.emailId}}</a></span>
+													</li>
+													<li>
+														<span class="title">Company Name:</span>
+														<span class="text">{{ct.companyName}}</span>
+													</li>
+													<li>
+														<span class="title"> Address:</span>
+														<span class="text">{{ct.companyAddress}}</span>
+													</li>
+													<li>
+														<span class="title">State:</span>
+														<span class="text">{{ct.companyState}}</span>
+													</li>
+													<li>
+														<span class="title">Description:</span>
+														<span class="text">{{ct.companyDescription}}</span>
+															<input type="hidden" name="id"  value="{{ct.clientId}}">
+													</li>
+																<li>
+														<span class="title">Manager:</span>
+														<select name="manager">
+															<option>Select</option>
+															{% for i in mng %}
+															<option value="{{i.managerCode}}">{{i.fname}} {{i.lname}}</option>
+															{% endfor %}
+														</select>
+													</li>
+													</form>
+
+
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+						</div>
+					</div>
+                </div>
+
+
+{% endblock %}

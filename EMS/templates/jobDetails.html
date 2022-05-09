@@ -1,0 +1,142 @@
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from dreamguys.co.in/preadmin/hr/job-view.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 15 Mar 2021 11:06:03 GMT -->
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+        <link rel="shortcut icon" type="image/x-icon" href="{% static 'adminStatic/assets/img/favicon.png' %}">
+    	 <title>Current Jobs</title>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{% static 'adminStatic/assets/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'adminStatic/assets/css/font-awesome.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'adminStatic/assets/css/line-awesome.min.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'adminStatic/assets/plugins/morris/morris.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'adminStatic/assets/css/style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'adminStatic/assets/css/fullcalendar.min.css' %}">
+
+	<link rel="stylesheet" href="{% static 'adminStatic/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css' %}">
+    <link rel="stylesheet" href="{% static 'adminStatic/plugins/datatables-responsive/css/responsive.bootstrap4.min.css' %}">
+    <link rel="stylesheet" href="{% static 'adminStatic/plugins/datatables-buttons/css/buttons.bootstrap4.min.css' %}">
+
+	<!--[if lt IE 9]>
+			<script src="{% static 'adminStatic/assets/js/html5shiv.min.js' %}"></script>
+			<script src="{% static 'adminStatic/assets/js/respond.min.js' %}"></script>
+		<![endif]-->
+    </head>
+    <body>
+        <div class="main-wrapper">
+            <div class="header">
+                <div class="header-left">
+                    <a href="index.html" class="logo">
+						<img src="{% static  'adminStatic/assets/img/logo.png' %}" width="40" height="40" alt="">
+					</a>
+                </div>
+                <div class="page-title-box pull-left">
+					<h3>Focus Technologies</h3>
+                </div>
+			</div>
+            <div class="page-wrapper job-wrapper">
+                <div class="content container">
+					<div class="row">
+						<div class="col-md-8">
+							<div class="job-info job-widget">
+								<h3 class="job-title">Web Developer</h3>
+								<ul class="job-post-det">
+									<li><i class="fa fa-calendar"></i> Post Date: <span class="text-blue">May 28, 2021</span></li>
+									<li><i class="fa fa-calendar"></i> Last Date: <span class="text-blue">June 15, 2021</span></li>
+									<li><i class="fa fa-user-o"></i> Applications: <span class="text-blue">4</span></li>
+									<li><i class="fa fa-eye"></i> Views: <span class="text-blue">3806</span></li>
+								</ul>
+							</div>
+							<div class="job-content job-widget">
+								<div class="job-desc-title"><h4>About Focus</h4></div>
+								<div class="job-description">
+                                    <p>
+                                        Focus Technologies is a group of software engineers, creative designers, and technology consultants coming together to deliver marvelous Software products to our clients. We are also building products to solve complex business problems.
+                                    </p>
+								</div>
+								<div class="job-desc-title"><h4>Job Description</h4></div>
+								<div class="job-description">
+                                    <p>Responsibilities</p>
+									<ul class="square-list">
+                                        <li>Working on Django</li>
+                                        <li>Working with the team to manage, optimize, and customize multiple web applications</li>
+								        <li>Learning and working using new technologies</li>
+                                        <li>Building high-quality applications</li>
+                                        <li>Must have a good understanding of HTML, JavaScript, and CSS</li>
+								        <li>Must have good communication skills</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="job-det-info job-widget">
+								<a class="btn job-btn" href="{% url 'employeeRegistration' %}">Apply For This Job</a>
+								<div class="info-list">
+									<span><i class="fa fa-bar-chart"></i></span>
+									<h5>Job Type</h5>
+									<p> Full Time</p>
+								</div>
+								<div class="info-list">
+									<span><i class="fa fa-money"></i></span>
+									<h5>Salary</h5>
+									<p>Rs 32k - Rs 38k</p>
+								</div>
+								<div class="info-list">
+									<span><i class="fa fa-suitcase"></i></span>
+									<h5>Experience</h5>
+									<p>Freshers</p>
+								</div>
+								<div class="info-list">
+									<span><i class="fa fa-ticket"></i></span>
+									<h5>Vacancy</h5>
+									<p>5</p>
+								</div>
+								<div class="info-list">
+									<span><i class="fa fa-map-signs"></i></span>
+									<h5>Location</h5>
+									<p> Focus Technologies
+									<br> 3864 Quiet Valley Lane,
+									<br> Gujarat,
+									<br> India</p>
+								</div>
+								<div class="info-list">
+									<p> 921-978-7102
+									<br> focustechnologies@example.com
+									<br> https://www.example.com
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+                </div>
+            </div>
+        </div>
+
+		<div class="sidebar-overlay" data-reff="#sidebar"></div>
+        <script type="text/javascript" src="{% static 'adminStatic/assets/js/jquery-3.2.1.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'adminStatic/assets/js/bootstrap.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'adminStatic/assets/js/jquery.slimscroll.js' %}"></script>
+		<script type="text/javascript" src="{% static 'adminStatic/assets/plugins/morris/morris.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'adminStatic/assets/plugins/raphael/raphael-min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'adminStatic/assets/js/chart.js' %}"></script>
+		<script type="text/javascript" src="{% static 'adminStatic/assets/js/app.js' %}"></script>
+		<script type="text/javascript" src="{% static 'adminStatic/assets/js/jquery.dataTables.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'adminStatic/assets/js/dataTables.bootstrap.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'adminStatic/assets/js/select2.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'adminStatic/assets/js/moment.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'adminStatic/assets/js/bootstrap-datetimepicker.min.js' %}"></script>
+		 <script type="text/javascript" src="{% static 'adminStatic/assets/js/fullcalendar.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'adminStatic/assets/js/jquery.fullcalendar.js' %}"></script>
+		<script type="text/javascript" src="{% static 'adminStatic/assets/js/jquery-ui.min.html' %}"></script>
+
+    </body>
+
+<!-- Mirrored from dreamguys.co.in/preadmin/hr/job-view.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 15 Mar 2021 11:06:03 GMT -->
+</html>
+
+{% endblock %}

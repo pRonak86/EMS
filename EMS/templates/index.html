@@ -1,0 +1,362 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<title>Home Page</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<body id="myPage">
+
+<!-- Sidebar on click -->
+<nav class="w3-sidebar w3-bar-block w3-white w3-card w3-animate-left w3-xxlarge" style="display:none;z-index:2" id="mySidebar">
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-display-topright w3-text-teal">Close
+    <i class="fa fa-remove"></i>
+  </a>
+  <a href="#" class="w3-bar-item w3-button">Link 1</a>
+  <a href="#" class="w3-bar-item w3-button">Link 2</a>
+  <a href="#" class="w3-bar-item w3-button">Link 3</a>
+  <a href="#" class="w3-bar-item w3-button">Link 4</a>
+  <a href="#" class="w3-bar-item w3-button">Link 5</a>
+</nav>
+
+<!-- Navbar -->
+<div class="w3-top">
+ <div class="w3-bar w3-theme-d2 w3-left-align">
+  <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-hover-white w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
+  <a href="#" class="w3-bar-item w3-button w3-teal"><i class="fa fa-home w3-margin-right"></i>Employee Management System</a>
+  <a href="#team" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Team</a>
+  <a href="#work" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Work</a>
+    <a href="#contact" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Contact</a>
+     <a href="{% url 'jobList' %}" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Current Jobs</a>
+     <div class="w3-dropdown-hover w3-hide-small">
+    <button class="w3-button" title="Notifications">Login<i class="fa fa-caret-down"></i></button>
+    <div class="w3-dropdown-content w3-card-4 w3-bar-block">
+     <li><a href="{% url 'employeeLogin' %}">Employee Login</a></li>
+      <li><a href="{% url 'managerLogin' %}">Manager Login</a></li>
+       <li><a href="{% url 'clientLogin' %}">Client Login</a></li>
+    </div>
+          </div>
+         <a href="{% url 'clientRegistration' %}" class="w3-bar-item w3-button w3-hide-small w3-hover-white">New Client</a>
+
+  <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal" title="Search"><i class="fa fa-search"></i></a>
+ </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium">
+    <a href="#team" class="w3-bar-item w3-button">Team</a>
+    <a href="#work" class="w3-bar-item w3-button">Work</a>
+    <a href="#pricing" class="w3-bar-item w3-button">Price</a>
+    <a href="#contact" class="w3-bar-item w3-button">Contact</a>
+    <a href="#" class="w3-bar-item w3-button">Search</a>
+  </div>
+</div>
+
+<!-- Image Header -->
+<div class="w3-display-container w3-animate-opacity">
+  <img src="static/images/wp1.jpg" alt="boat" style="width:100%;min-height:350px;max-height:600px;">
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="id01" class="w3-modal">
+  <div class="w3-modal-content w3-card-4 w3-animate-top">
+    <header class="w3-container w3-teal w3-display-container">
+      <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-teal w3-display-topright"><i class="fa fa-remove"></i></span>
+      <h4>Oh snap! We just showed you a modal..</h4>
+      <h5>Because we can <i class="fa fa-smile-o"></i></h5>
+    </header>
+    <div class="w3-container">
+      <p>Cool huh? Ok, enough teasing around..</p>
+      <p>Go to our <a class="w3-text-teal" href="/w3css/default.asp">W3.CSS Tutorial</a> to learn more!</p>
+    </div>
+    <footer class="w3-container w3-teal">
+      <p>Modal footer</p>
+    </footer>
+  </div>
+</div>
+
+<!-- Team Container -->
+<div class="w3-container w3-padding-64 w3-center" id="team">
+<h2>OUR TEAM</h2>
+<p>Meet the team - our office rats:</p>
+
+<div class="w3-row"><br>
+
+<div class="w3-quarter">
+  <img src="static/images/t1.jpg" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity"><br><br>
+  <h3>Neetu Singh</h3>
+  <p> Manager</p>
+</div>
+
+<div class="w3-quarter">
+  <img src="static/images/t3.jpg" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity"><br><br>
+  <h3>Vishal Singh</h3>
+  <p>Web Designer</p>
+</div>
+
+<div class="w3-quarter">
+  <img src="static/images/t2.jpg" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity"><br><br>
+  <h3>Smit Solanki</h3>
+  <p>Employee</p>
+</div>
+  <div class="w3-quarter">
+  <img src="static/images/t5.jpg" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity"><br><br>
+  <h3>Rakesh Patel</h3>
+    <p>Web Developer</p>
+  <p></p>
+</div>
+</div>
+</div>
+
+<!-- Work Row -->
+<div class="w3-row-padding w3-padding-64 w3-theme-l1" id="work">
+
+<div class="w3-quarter">
+<h2>Our Work</h2>
+<p>An employee management system is a platform where all work-related as well as important personal details of an employee is stored and managed in a secure way. By using this system, you can manage admin activities in an easier and quicker way.
+  Employees are the pillar of any organization and an ideal employee management tool makes a big difference to an organization.</p>
+</div>
+
+<div class="w3-quarter">
+<div class="w3-card w3-white">
+  <img src="static/images/m1.jpg" alt="Snow" style="width:100%">
+  <div class="w3-container">
+    <h4>Staff Management Software</h4>
+  <p>Pocket employee is a set of tools developed to manage everything related to hr functionalities, including payroll automation, recruitment management, staff management, employee database management, etc. Our HR software solution also assists HR in all their critical operations right from hiring workers/ employees to retirement. The payroll to be done every month for your employees, processing arrears, leave management, attendance, etc.</p>
+
+  </div>
+  </div>
+</div>
+
+<div class="w3-quarter">
+<div class="w3-card w3-white">
+  <img src="static/images/m3.jpg" alt="Lights" style="width:100%">
+  <div class="w3-container">
+    <h4>Intelligent Reporting</h4>
+  <p>Create error-free and intelligent HR MIS reports at the click of a button. This is something that makes Pocket HRMS one of the best HRM software in India.This is something that makes Pocket HRMS one of the best HRM software in India. The drag and drop feature makes it easy to get customized reports on the go. It lets you generate reports of various kinds including attendance reports, leave reports, salary reports, bank statements, separated employees' report, etc</p>
+    </div>
+  </div>
+</div>
+
+<div class="w3-quarter">
+<div class="w3-card w3-white">
+  <img src="static/images/m2.jpg" alt="Mountains" style="width:100%">
+  <div class="w3-container">
+  <h4>User-interactive</h4>
+  <p>Our personalized AI-powered HR assistant i.e. smHRty is all set to revolutionize the HR management. Almost all questions are attended by the bot itself, keeping your HRs free for other prime duties. It saves more time of HR professionals. Mundane queries which include questions associated with leaves taken, leaves left, pay slips, manager details, knowing your PF account number, other employment details etc. are no more a hurdle for any HR.</p>
+  </div>
+  </div>
+</div>
+
+</div>
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="{% static 'About Us/css/font-face.css' %}" rel="stylesheet" media="all">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+}
+
+.about-section {
+  padding: 50px;
+  text-align: center;
+  background-color: #474e5d;
+  color: white;
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="about-section">
+  <h1>About Us Page</h1>
+  <p>An employee management system consists of crucial work-related and important personal information about an employee</p>
+  <p>Resize the browser window to see that this page is responsive by the way.</p>
+</div>
+
+<h2 style="text-align:center"></h2>
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <img src="static/images/Time Tracking Software.png" alt="Jane" style="width:100%">
+      <div class="container">
+              <p class="title">Time Tracking Software:</p>
+        <p>It saves managers' and employees' time to jump through few forgotten entries. It automatically calculates total working hours and helps HR to run payroll accurately and quickly. Time management system is useful for organizations in monitoring their staff and making them more productive. Managing employees' time has become easier!</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <img src="static/images/p2.png" alt="Mike" style="width:100%">
+      <div class="container">
+        <p class="title">Performance management system:</p>
+        <p>Every organization needs to pay their employees along with some appraisals meant to recognize their hardwork at workplace. Appraisal management system takes care of this. It keeps a regular track of employee's performance throughout the year and provides bias-free review to their performance, which is also based on their colleagues' reviews. An ideal solution to set up a fair appraisal process!</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <img src="static/images/Leave1.png" alt="John" style="width:100%">
+      <div class="container">
+        <p class="title">Timesheet management system:</p>
+        <p>Employees always expect timely and accurate remuneration after a month of hard work. Error or delays in timesheet generation can disturb the entire cycle of salary processing. So, investing in cloud based timesheet management system can take away all these worries. All the data is stored on cloud that means instant access to the required information in real-time is possible now. The system turns this tiresome task of timesheet generation a piece of cake for HR people.</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+
+<!-- Container -->
+<div class="w3-container" style="position:relative">
+  <a onclick="w3_open()" class="w3-button w3-xlarge w3-circle w3-teal"
+  style="position:absolute;top:-28px;right:24px">+</a>
+</div>
+
+
+<!-- Contact Container -->
+<div class="w3-container w3-padding-64 w3-theme-l5" id="contact">
+  <div class="w3-row">
+    <div class="w3-col m5">
+    <div class="w3-padding-16"><span class="w3-xlarge w3-border-teal w3-bottombar">Contact Us</span></div>
+      <h3>Address</h3>
+      <p>Swing by for a cup of coffee, or whatever.</p>
+      <p><i class="fa fa-map-marker w3-text-teal w3-xlarge"></i>  Gujarat, India</p>
+      <p><i class="fa fa-phone w3-text-teal w3-xlarge"></i>  -9198787878</p>
+      <p><i class="fa fa-envelope-o w3-text-teal w3-xlarge"></i>  focus@test.com</p>
+    </div>
+    <div class="w3-col m7">
+      <form class="w3-container w3-card-4 w3-padding-16 w3-white" action="/action_page.php" target="_blank">
+      <div class="w3-section">
+        <label>Name</label>
+        <input class="w3-input" type="text" name="Name" required>
+      </div>
+      <div class="w3-section">
+        <label>Email</label>
+        <input class="w3-input" type="text" name="Email" required>
+      </div>
+      <div class="w3-section">
+        <label>Message</label>
+        <input class="w3-input" type="text" name="Message" required>
+      </div>
+      <input class="w3-check" type="checkbox" checked name="Like">
+      <label>I Like it!</label>
+      <button type="submit" class="w3-button w3-right w3-theme">Send</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Image of location/map -->
+<img src="static/images/map.jpg" class="w3-image w3-greyscale-min" style="width:100%;">
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
+  <h4>Follow Us</h4>
+  <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Facebook"><i class="fa fa-facebook"></i></a>
+  <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Twitter"><i class="fa fa-twitter"></i></a>
+  <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Google +"><i class="fa fa-google-plus"></i></a>
+  <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Google +"><i class="fa fa-instagram"></i></a>
+  <a class="w3-button w3-large w3-teal w3-hide-small" href="javascript:void(0)" title="Linkedin"><i class="fa fa-linkedin"></i></a>
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+
+  <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">
+    <span class="w3-text w3-padding w3-teal w3-hide-small">Go To Top</span>
+    <a class="w3-button w3-theme" href="#myPage"><span class="w3-xlarge">
+    <i class="fa fa-chevron-circle-up"></i></span></a>
+  </div>
+</footer>
+
+<script>
+// Script for side navigation
+function w3_open() {
+  var x = document.getElementById("mySidebar");
+  x.style.width = "300px";
+  x.style.paddingTop = "10%";
+  x.style.display = "block";
+}
+
+// Close side navigation
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+
+// Used to toggle the menu on smaller screens when clicking on the menu button
+function openNav() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else {
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
+
+</body>

@@ -1,0 +1,107 @@
+{% include 'managerDashboard/base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- MAIN CONTENT-->
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+
+
+<div class="content-wrapper">
+
+ <section class="content">
+
+      <!-- Default box -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Projects Detail</h3>
+        </div>
+
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12 col-md-12 col-lg-8 order-2 order-md-1">
+                <h4>Recent Activity </h4>
+                {{pName.projectName}}
+                <br><hr>
+                			{% if not p %}
+								<div class="alert alert-danger alert-dismissible" role="alert">
+											<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              									  <span aria-hidden="true">&times;</span>
+											</button>
+											<div class="alert-icon">
+												<i class="far fa-fw fa-bell"></i>
+											</div>
+											<div class="alert-message">
+												<strong>Hello there!</strong> {{msg}}
+											</div>
+								</div>
+								{% endif %}
+
+                {% if p%}
+                {% for i in p %}
+              <div class="row">
+                <div class="col-12">
+                    <div class="post">
+                        <div class="user-block">
+                        <img width="60" height="60" class="rounded-circle mr-2" src="{{i.image.url}}" alt="John Doe" />
+            	        <span class="username">
+                          <a href="#">{{i.employeeName}}</a>
+                        </span>
+                        <span class="description">Shared publicly - {{i.date}}</span>
+                      </div>
+                      <!-- /.user-block -->
+                      <p>{{i.workDescription}}</p>
+                      <p>
+                        <a href="#" class="link-black text-sm"><i class="fas fa-link mr-1"></i> Demo File 1 v2</a>
+                      </p>
+                    </div>
+                    <hr>
+                </div>
+              </div>
+              {% endfor %}
+                {% endif %}
+            </div>
+            <div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
+              <h3 class="text-primary"><i class="fas fa-paint-brush"></i></h3>
+              <p class="text-muted"></p>
+              <br>
+              <div class="text-muted">
+                <p class="text-sm">Client Company
+
+                    {% for i in clt %}
+                  <b class="d-block">{{i.companyName}}</b>
+                  <p class="text-sm">Company Address
+                   <b class="d-block">{{i.companyAddress}}</b>
+                     <b class="d-block">{{i.companyState}}</b>
+                    {% endfor %}
+                </p>
+                  <br>
+                <p class="text-sm">Project Leader
+                  <b class="d-block">{{fname}} {{lname}}</b>
+                </p>
+              </div>
+
+              <h5 class="mt-5 text-muted">Project files</h5>
+              <ul class="list-unstyled">
+                <li>
+                  <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-word"></i> Functional-requirements.docx</a>
+                </li>
+                <li>
+                  <a href="" class="btn-link text-secondary"><i class="far fa-fw fa-file-word"></i> Contract-10_12_2014.docx</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+
+    </section>
+   </div>
+                    </div>
+                </div>
+            </div>
+
+{% endblock %}

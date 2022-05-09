@@ -1,0 +1,57 @@
+{% extends 'clientDashboard/base.html' %}
+{% load static %}
+{% block content %}
+<main class="content">
+				<div class="container-fluid p-0">
+
+					<h1 class="h3 mb-3">Add New Project </h1>
+					<div class="row">
+						<div class="col-12 col-xl-6">
+							<div class="card">
+								<div class="card-body">
+									<form method="post" action="/saveProject/" enctype="multipart/form-data">
+										{% csrf_token %}
+										<div class="mb-3">
+											<label class="form-label">Project Name </label>
+											<input type="text" class="form-control" name="projectName" placeholder="Enter Project Name">
+										</div>
+										<div class="mb-3">
+											<label class="form-label">Total Days</label>
+													<select class="form-control mb-3" name="totalDays">
+          												<option selected>Select Total Days</option>
+          												<option>10</option>
+														<option>15</option>
+														<option>20</option>
+														<option>25</option>
+														<option>30</option>
+													</select>
+										</div>
+										<div class="mb-3">
+											<label class="form-label">Deadline Date </label>
+											<input type="date" class="form-control" name="deadlineDate" placeholder="Project Description"></input>
+										</div>
+										<div class="mb-3">
+											<label class="form-label">Project Cost </label>
+											<input type="number" class="form-control" name="cost" placeholder="Project Cost"></input>
+										</div>
+										<div class="mb-3">
+											<label class="form-label">Project Description </label>
+											<textarea class="form-control" name="projectDescription" placeholder="Project Description" rows="6"></textarea>
+										</div>
+
+										<div class="mb-3">
+											<label class="form-label w-100">Document</label>
+											<input type="file" name="document">
+										</div>
+
+										<button type="submit" class="btn btn-primary">Submit</button>
+									</form>
+								</div>
+							</div>
+						</div>
+
+				</div>
+			</main>
+
+
+{% endblock %}

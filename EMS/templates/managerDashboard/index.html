@@ -1,0 +1,134 @@
+{% extends 'managerDashboard/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+
+            <section class="welcome p-t-10">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="title-4">Welcome back
+                                <span></span>
+                            </h1>
+                            <hr class="line-seprate">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+             <section class="statistic statistic2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-4">
+                            <div class="statistic__item statistic__item--blue">
+                                <span class="desc">Total Team Member</span>
+                                <h2 class="number">{{t}}</h2>
+                                <div class="icon">
+                                    <i class="zmdi zmdi-account-o"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="statistic__item statistic__item--blue">
+                                <span class="desc">Current Project</span>
+                                <h4 class="desc">{{pName}}</h4>
+                                <div class="icon">
+                                    <i class="zmdi zmdi-shopping-cart"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="statistic__item statistic__item--blue">
+                                   <span class="desc">Today's Date   </span>
+                                     <h4 class="desc">{{date}}</h4>
+                                <div class="icon">
+                                    <i class="zmdi zmdi-money"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+             <section>
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <!-- RECENT REPORT 2-->
+                                <div class="recent-report2">
+                                    <h3 class="title-3">Client </h3><br>
+                                    <div class="chart-info">
+                               <div class="au-message__item-text">
+                                   <div class="avatar-wrap online">
+                                       <div class="avatar">
+                                           <img src="{{img.url}}" alt="Nicholas Martinez">
+                                       </div>
+                                   </div>
+                                   <div class="text">
+                                       <h5 class="name">{{cfname}} {{clname}}</h5>
+                                   </div>
+                               </div><br>
+
+                                 <div class="au-message__item-text">
+                                   <div>
+                                       <div class="text">
+                                           <h4 class="title-3" align="center">Company Details</h4><hr>
+                                       </div>
+                                   </div>
+                                   <div class="text">
+                                       <h3 class="title-3" align="center">{{companyName}}</h3>
+                                       <h5 class="title-3" align="center">{{companyAddress}}</h5>
+                                       <h6 class="title-3" align="center">{{state}}</h6>
+
+                                   </div>
+                                </div>
+                                    </div>
+                                </div>
+                                <!-- END RECENT REPORT 2             -->
+                            </div>
+                            <div class="col-xl-6">
+                                <!-- TASK PROGRESS-->
+                                <div class="task-progress">
+                                    <h3 class="title-3">Team Members</h3>
+                                    <div class="au-skill-container">
+                                        {% for i in t1%}
+                                             <div class="au-message__item unread">
+                                                    <div class="au-message__item-inner">
+                                                        <div class="au-message__item-text">
+                                                            <div class="avatar-wrap online">
+                                                                <div class="avatar">
+                                                                    <img src="{{i.image.url}}" alt="Nicholas Martinez">
+                                                                </div>
+                                                            </div>
+                                                            <div class="text">
+                                                                <h5 class="name">{{i.fname}} {{i.lname}}</h5>
+                                                            </div>
+                                                        </div>
+                                                        <div class="au-message__item-time">
+                                                            <span>11:00 PM</span>
+                                                        </div>
+                                                    </div>
+                                             </div>
+                                        {% endfor %}
+                                </div>
+                                <!-- END TASK PROGRESS-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

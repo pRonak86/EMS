@@ -1,0 +1,66 @@
+{% extends 'adminDashboard/base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="page-wrapper" xmlns="http://www.w3.org/1999/html">
+    <div class="content container-fluid">
+   	<div class="row">
+						<div class="col-xs-4">
+							<h4 class="page-title">Employee</h4>
+						</div>
+					<hr>
+					</div>
+					<form action="/savefilterEmployee/" method="post">
+						{% csrf_token %}
+					<div class="row filter-row">
+						<div class="col-sm-2 col-xs-6">
+							<div class="form-group form-focus select-focus">
+								<label class="control-label">Employee Id </label>
+								<select name="employeeId">
+									<option value="">Select Employee Id </option>
+									{% for i in emp %}
+									<option>{{i.empCode}}</option>
+									{% endfor %}
+								</select>
+							</div>
+						</div>
+						<div class="col-sm-3 col-xs-6">
+							<div class="form-group form-focus select-focus">
+								<label class="control-label">Date</label>
+								<input type="date" class="form-control floating" name="date" />
+							</div>
+						</div>
+						<div class="col-sm-3 col-xs-6">
+						<input type="submit" class="btn btn-success btn-block" value="Search" />
+						</div>
+                    </div>
+					</form>
+
+		<div class="row">
+						<div class="col-md-12">
+							<div class="table-responsive">
+								<table class="table table-striped custom-table datatable">
+									<thead>
+										<tr>
+											<th style="width:10%;">Name</th>
+											<th>Employee ID</th>
+											<th>Client  </th>
+											<th>Project</th>
+											<th>Login Time</th>
+											<th>LogOut Time</th>
+											<th>Work Description</th>
+											<th>Duration</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+										</tr>
+									</tbody>
+
+
+    </div>
+</div>
+
+
+{% endblock %}

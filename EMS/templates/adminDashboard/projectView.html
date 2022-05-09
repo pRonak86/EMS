@@ -1,0 +1,112 @@
+{% extends 'adminDashboard/base.html' %}
+{% load static %}
+{% block content %}
+
+            <div class="page-wrapper">
+                <div class="content container-fluid">
+					<div class="row">
+						<div class="col-xs-8">
+							<h4 class="page-title">{{pj.projectName}}</h4>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-9">
+							<div class="panel">
+								<div class="panel-body">
+									<div class="project-title">
+										<h5 class="panel-title">{{pj.projectName}}</h5>
+									</div>
+									<p>{{pj.projectDescription}} </p>
+								</div>
+							</div>
+
+							<div class="project-task">
+								<div class="tabbable">
+                                    	<div class="panel project-user">
+								<div class="panel-body">
+									<h6 class="panel-title m-b-20">Assigned Leader <a class="" data-toggle="modal" data-target="#assign_leader"><i class=""></i></a></h6>
+									<ul class="list-box">
+											{% for i in mng %}
+										<li>
+											<a href="profile.html">
+												<div class="list-item">
+													<div class="list-left">
+													<span class="user-img"><img class="img-circle" src="{{i.image.url}}" width="40" height="40" alt="Admin">
+													</div>
+													<div class="list-body">
+														<span class="message-author">{{i.fname}} {{i.lname}}</span>
+														<div class="clearfix"></div>
+														<span class="message-content">Team Leader</span>
+													</div>
+												</div>
+											</a>
+										</li>
+										{% endfor %}
+									</ul>
+								</div>
+							</div>
+                                    <div class="panel project-user">
+								<div class="panel-heading">
+									<h6 class="panel-title">Assigned users <a class="" data-toggle="modal" data-target="#assign_user"><i class=""></i> </a></h6>
+								</div>
+								<div class="panel-body">
+									<ul class="list-box">
+										{% for i in emp %}
+										<li>
+											<a href="profile.html">
+												<div class="list-item">
+													<div class="list-left">
+													<span class="user-img"><img class="img-circle" src="{{i.image.url}}" width="40" alt="Admin">
+													</div>
+													<div class="list-body">
+														<span class="message-author">{{i.fname}} {{i.lname}}</span>
+														<div class="clearfix"></div>
+														<span class="message-content">Team Member</span>
+													</div>
+												</div>
+											</a>
+										</li>
+										{% endfor %}
+									</ul>
+								</div>
+							</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-3">
+							<div class="panel">
+								<div class="panel-body">
+									<h6 class="panel-title m-b-15">Project details</h6>
+									<table class="table table-striped table-border">
+										<tbody>
+											<tr>
+												<td>Cost:</td>
+												<td class="text-right">Rs {{pj.cost}}</td>
+											</tr>
+											<tr>
+												<td>Total Days:</td>
+												<td class="text-right">{{pj.totalDays}} Days</td>
+											</tr>
+											<tr>
+												<td>Created:</td>
+												<td class="text-right">{{pj.createdDate}}</td>
+											</tr>
+											<tr>
+												<td>Deadline:</td>
+												<td class="text-right">{{pj.deadlineDate}}</td>
+											</tr>
+											<tr>
+												<td>Status:</td>
+												<td class="text-right"><span class="label label-success-border">{{pj.status}}</span></td>
+											</tr>
+
+										</tbody>
+									</table>
+								</div>
+							</div>
+
+						</div>
+					</div>
+                </div>
+
+{% endblock %}

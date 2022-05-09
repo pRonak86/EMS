@@ -1,0 +1,57 @@
+{% extends 'adminDashboard/base.html' %}
+{% load static %}
+{% block content %}
+
+ <div class="page-wrapper">
+                <div class="content container-fluid">
+					<div class="row">
+						<div class="col-xs-8">
+							<h4 class="page-title">Leave Request</h4>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="table-responsive">
+								<table class="table table-striped custom-table m-b-0 datatable">
+									<thead>
+										<tr>
+											<th>Employee</th>
+											<th>Leave Type</th>
+											<th>From</th>
+											<th>To</th>
+											<th>No of Days</th>
+											<th>Reason</th>
+											<th class="text-center">Status</th>
+										</tr>
+									</thead>
+									<tbody>
+									{% for i in l %}
+										<tr>
+											<td>
+												<a class="avatar">R</a>
+												<h2><a href="#">{{i.employeeName}} <span>{{i.employeeId}}</span></a></h2>
+											</td>
+											<td>{{i.leaveType}}</td>
+											<td>{{i.startDate}}</td>
+											<td>{{i.endDate}}</td>
+											<td>{{i.totalDays}}</td>
+											<td>{{i.employeeReason}}</td>
+											<td class="text-center">
+												<div class="dropdown action-label">
+													<a class="btn btn-white btn-sm rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
+														<i class="fa fa-dot-circle-o text-purple"></i> {{i.status}}
+													</a>
+												</div>
+											</td>
+										</tr>
+									{% endfor %}
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+                </div>
+
+
+
+{% endblock %}

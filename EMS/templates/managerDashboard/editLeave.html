@@ -1,0 +1,58 @@
+{% extends 'managerDashboard/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="col-md-8">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong>Leave</strong> Form
+                                    </div>
+                                    <div class="card-body card-block">
+                                        <form action="/saveEditLeave/" method="post">
+                                            {% csrf_token %}
+                                          <div class="form-group">
+                                                <label class="control-label mb-1">Employee Id</label>
+                                                <input name="id" type="text" value="{{leave.employeeId}}" class="form-control" aria-required="true" aria-invalid="false" >
+                                                <input type="hidden" name="leaveId" value="{{leave.leaveId}}">
+                                                <input type="hidden" name="totalDays" value="{{leave.totalDays}}">
+                                            </div>
+
+                                            <div class="form-group">
+                                      		<label class="form-label">Status</label>
+													<select class="form-control mb-3" name="status">
+          												<option selected>Select</option>
+          												<option>Approved</option>
+														<option>Reject</option>
+													</select>
+									      </div>
+                                            <div class="form-group">
+                                                <label class=" form-control-label">Reason</label>
+                                                   <textarea name="reason" rows="6" placeholder="Content..." class="form-control"></textarea>
+                                                 <span class="help-block">Please give Reason</span>
+                                            </div>
+                                                <div class="card-footer">
+                                        <button type="submit" class="btn btn-primary btn-sm">
+                                            <i class="fa fa-dot-circle-o"></i> Submit
+                                        </button>
+                                        <button type="reset" class="btn btn-danger btn-sm">
+                                            <i class="fa fa-ban"></i> Reset
+                                        </button>
+                                    </div>
+
+                                        </form>
+                                    </div>
+                                </div>
+                    </div>
+                </div>
+</div>
+
+
+
+
+
+
+</div>
+{% endblock %}

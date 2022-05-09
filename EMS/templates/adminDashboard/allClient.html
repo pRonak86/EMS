@@ -1,0 +1,154 @@
+{% extends 'adminDashboard/base.html' %}
+{% load static %}
+{% block content %}
+  <div class="page-wrapper">
+                <div class="content container-fluid">
+					<div class="row">
+						<div class="col-sm-4 col-xs-3">
+							<h4 class="page-title">Clients</h4>
+						</div>
+					</div>
+					{% if e1 %}
+					{% for i in e1 %}
+
+						<div class="col-md-4 col-sm-4 col-xs-6 col-lg-3">
+							<div class="profile-widget">
+								<div class="profile-img">
+									<a href="{% url 'clientProfile' pk=i.clientId %}">
+										<img src="{{i.image.url}}" width="40" height="40" alt="" class="avatar">
+									</a>
+								</div>
+								<div class="dropdown profile-action">
+									<a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+									<ul class="dropdown-menu pull-right">
+										<li><a href="#" data-toggle="modal" data-target="#delete_client"><i class="fa fa-trash-o m-r-5"></i> Delete</a></li>
+									</ul>
+								</div>
+								<h4 class="user-name m-t-10 m-b-0 text-ellipsis"><a href="client-profile.html">{{i.fname}} {{i.lname}}</a></h4>
+								<h5 class="user-name m-t-10 m-b-0 text-ellipsis"><a href="client-profile.html">{{i.companyName}}</a></h5>
+								<div class="small text-muted">{{i.clientId }}</div>
+								<a href="chat.html" class="btn btn-default btn-sm m-t-10">Message</a>
+								<a href="{% url 'clientProfile' pk=i.clientId %}" class="btn btn-default btn-sm m-t-10">View Profile</a>
+							</div>
+
+						</div>
+					{% endfor %}
+					{% endif %}
+
+					</div>
+                </div>
+
+<div id="edit_client" class="modal custom-modal fade" role="dialog">
+				<div class="modal-dialog">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<div class="modal-content modal-lg">
+						<div class="modal-header">
+							<h4 class="modal-title">Edit Client</h4>
+						</div>
+						<div class="modal-body">
+							{{c.fname}}
+							<div class="m-b-30">
+								<form method="post" action="">
+									{% csrf_token %}
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label">First Name <span class="text-danger">*</span></label>
+												<input class="form-control" name="fname1" type="text" value={{c.fname}} >
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label">Last Name</label>
+												<input class="form-control" value="{{c.lname}}" name="lname" type="text">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label">Contact No<span class="text-danger">*</span></label>
+												<input class="form-control" value="" type="number" name="contact">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label">Email <span class="text-danger">*</span></label>
+												<input class="form-control floating" name="email" value="barrycuda@example.com" type="email">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label">Company Name</label>
+												<input class="form-control" value="" type="text" name="companyName">
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label">Company Address</label>
+												<input class="form-control" value="" type="text" name="companyAddress">
+											</div>
+										</div>
+                                        <div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label">Company State</label>
+												<input class="form-control" value="" type="text" name="companyState">
+											</div>
+										</div>
+										  <div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label">Gender</label>
+												<input class="form-control" value="" type="text" name="gender">
+											</div>
+										</div>
+
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label">Client ID <span class="text-danger">*</span></label>
+												<input class="form-control floating" value="CLT-0001" type="text">
+											</div>
+										</div>
+											<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label">Password <span class="text-danger">*</span></label>
+												<input class="form-control floating" value="CLT-0001" type="hidden" name="password">
+											</div>
+										</div>
+
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label">Company Description</label>
+												<input class="form-control" value="" type="text" name="companyDescription">
+											</div>
+										</div>
+									</div>
+									<div class="table-responsive m-t-15">
+									</div>
+									<div class="m-t-20 text-center">
+										<button class="btn btn-primary">Update Client</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+	<div id="delete_client" class="modal custom-modal fade" role="dialog">
+				<div class="modal-dialog">
+					<div class="modal-content modal-md">
+						<div class="modal-header">
+							<h4 class="modal-title">Delete Client</h4>
+						</div>
+						<div class="modal-body card-box">
+							<p>Are you sure want to delete this?</p>
+							<div class="m-t-20"> <a href="#" class="btn btn-default" data-dismiss="modal">Close</a>
+								<button type="submit" class="btn btn-danger">Delete</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+
+
+{% endblock %}

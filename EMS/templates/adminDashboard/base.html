@@ -1,0 +1,207 @@
+{% load static %}
+<html>
+    
+<!-- Mirrored from dreamguys.co.in/preadmin/hr/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 15 Mar 2021 11:04:39 GMT -->
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+        <link rel="shortcut icon" type="image/x-icon" href="{% static 'adminStatic/assets/img/favicon.png' %}">
+        <title>Admin Dashboard </title>
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{% static 'adminStatic/assets/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'adminStatic/assets/css/font-awesome.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'adminStatic/assets/css/line-awesome.min.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'adminStatic/assets/plugins/morris/morris.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'adminStatic/assets/css/style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'adminStatic/assets/css/fullcalendar.min.css' %}">
+
+	<link rel="stylesheet" href="{% static 'adminStatic/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css' %}">
+    <link rel="stylesheet" href="{% static 'adminStatic/plugins/datatables-responsive/css/responsive.bootstrap4.min.css' %}">
+    <link rel="stylesheet" href="{% static 'adminStatic/plugins/datatables-buttons/css/buttons.bootstrap4.min.css' %}">
+
+	<!--[if lt IE 9]>
+			<script src="{% static 'adminStatic/assets/js/html5shiv.min.js' %}"></script>
+			<script src="{% static 'adminStatic/assets/js/respond.min.js' %}"></script>
+		<![endif]-->
+    </head>
+    <body>
+        <div class="main-wrapper">
+            <div class="header">
+                <div class="header-left">
+                    <a href="index.html" class="logo">
+						<img src="{% static 'adminStatic/assets/img/logo.png' %}" width="40" height="40" alt="">
+					</a>
+                </div>
+				<a id="toggle_btn" href="javascript:void(0);"><i class="la la-bars"></i></a>
+                <div class="page-title-box pull-left">
+					<h3>Admin Dashboard</h3>
+                </div>
+				<a id="mobile_btn" class="mobile_btn pull-left" href="#sidebar"><i class="fa fa-bars" aria-hidden="true"></i></a>
+				<ul class="nav navbar-nav navbar-right user-menu pull-right">
+					<li class="dropdown">
+						<a href="profile.html" class="dropdown-toggle user-link" data-toggle="dropdown" title="Admin">
+							<span class="user-img"><img class="img-circle" src="{% static 'adminStatic/assets/img/user.jpg' %}" width="40" alt="Admin">
+							<span class="status online"></span></span>
+							<span>Admin</span>
+							<i class="caret"></i>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="#">My Profile</a></li>
+							<li><a href="#">Edit Profile</a></li>
+							<li><a href="{% url 'adminDetails' %}">Admin Details</a></li>
+							<li><a href="{% url 'adminlogin' %}">Logout</a></li>
+						</ul>
+					</li>
+				</ul>
+				<div class="dropdown mobile-user-menu pull-right">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+					<ul class="dropdown-menu pull-right">
+						<li><a href="profile.html">My Profile</a></li>
+						<li><a href="edit-profile.html">Edit Profile</a></li>
+						<li><a href="settings.html">Add New Admin</a></li>
+						<li><a href="login.html">Logout</a></li>
+					</ul>
+				</div>
+            </div>
+            <div class="sidebar" id="sidebar">
+                <div class="sidebar-inner slimscroll">
+					<div id="sidebar-menu" class="sidebar-menu">
+						<ul>
+							<li class="active"> 
+								<a href="{% url 'adminDashboard' %}"><i class="la la-dashboard"></i> <span>Dashboard</span></a>
+							</li>
+							<li class="submenu">
+								<a href="#" class="noti-dot"><i class="la la-user"></i> <span> Employees</span> <span class="menu-arrow"></span></a>
+								<ul style="display: none;">
+									<li><a href="{% url 'allEmployee' %}">All Employees</a></li>
+									<li><a href="{% url 'employeeRequest' %}">Employee Request </a></li>
+								</ul>
+							</li>
+							<li class="submenu">
+								<a href="#" class="noti-dot"><i class="la la-user"></i> <span>Managers</span> <span class="menu-arrow"></span></a>
+								<ul style="display: none;">
+									<li><a href="{% url 'allManager' %}">All Managers</a></li>
+									<li><a href="{% url 'managerRequest' %}">Manager Requests <span class="badge bg-primary pull-right">1</span></a></li>
+								</ul>
+							</li>
+
+							<li class="submenu">
+								<a href="#" class="noti-dot"><i class="la la-user"></i> <span> Client</span> <span class="menu-arrow"></span></a>
+								<ul style="display: none;">
+									<li><a href="{% url 'allClient' %}">All Client</a></li>
+									<li><a href="{% url 'clientRequest' %}">Client Request </a></li>
+								</ul>
+							</li>
+
+							<li class="submenu">
+								<a href="#" class="noti-dot"><i class="la la-rocket"></i> <span> Project</span> <span class="menu-arrow"></span></a>
+								<ul style="display: none;">
+									<li><a href="{% url 'allProject' %}">All Projects</a></li>
+									<li><a href="{% url 'projectRequest' %}">New Projects </a></li>
+								</ul>
+							</li>
+
+							<li>
+								<a href="{% url 'employeeStatus' %}"><i class="la la-tasks"></i> <span>Tasks</span></a>
+							</li>
+							<li>
+								<a href="{% url 'filterEmployee' %}"><i class="la la-book"></i> <span>Employee Status</span></a>
+							</li>
+							<li class="submenu">
+								<a href="#" class="noti-dot"><i class="la la-rocket"></i> <span> Attendance</span> <span class="menu-arrow"></span></a>
+								<ul style="display: none;">
+									<li><a href="{% url 'attendance' %}">Attendance</a></li>
+									<li><a href="{% url 'attendanceFilter' %}">Filter Attendance</a></li>
+								</ul>
+							</li>
+							<li class="submenu">
+								<a href="#"><i class="la la-money"></i> <span> Payroll </span> <span class="menu-arrow"></span></a>
+								<ul style="display: none;">
+									<li><a href="{% url 'salary' %}"> Employee Salary </a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="{% url 'hoildays' %}"><i class="la la-at"></i> <span>Hoilday</span></a>
+							</li>
+							<li>
+								<a href="{% url 'adminLeave' %}"><i class="la la-at"></i> <span>Leave</span></a>
+							</li>
+							<li> 
+								<a href="{% url 'notice' %}"><i class="la la-comments"></i> <span>Notice</span> <span class="badge bg-primary pull-right">5</span></a>
+							</li>
+							<li class="submenu">
+								<a href="#"><i class="la la-pie-chart"></i> <span> Reports </span> <span class="menu-arrow"></span></a>
+								<ul style="display: none;">
+									<li><a href="{% url 'reportEmployee' %}"> Employee  Report </a></li>
+									<li><a href="{% url 'reportManager' %}"> Manager Report </a></li>
+									<li><a href="{% url 'reportClient' %}"> Client Report </a></li>
+									<li><a href="{% url 'reportEmployeeFilter' %}">Search Report </a></li>
+									<li><a href="{% url 'reportProject' %}">Project Report </a></li>
+
+								</ul>
+							</li>
+						</ul>
+					</div>
+                </div>
+	            </div>
+        </div>
+
+			<div>
+				{% block content %}
+				{% endblock %}
+			</div>
+
+		<div class="sidebar-overlay" data-reff="#sidebar"></div>
+        <script type="text/javascript" src="{% static 'adminStatic/assets/js/jquery-3.2.1.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'adminStatic/assets/js/bootstrap.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'adminStatic/assets/js/jquery.slimscroll.js' %}"></script>
+		<script type="text/javascript" src="{% static 'adminStatic/assets/plugins/morris/morris.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'adminStatic/assets/plugins/raphael/raphael-min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'adminStatic/assets/js/chart.js' %}"></script>
+		<script type="text/javascript" src="{% static 'adminStatic/assets/js/app.js' %}"></script>
+		<script type="text/javascript" src="{% static 'adminStatic/assets/js/jquery.dataTables.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'adminStatic/assets/js/dataTables.bootstrap.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'adminStatic/assets/js/select2.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'adminStatic/assets/js/moment.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'adminStatic/assets/js/bootstrap-datetimepicker.min.js' %}"></script>
+		 <script type="text/javascript" src="{% static 'adminStatic/assets/js/fullcalendar.min.js' %}"></script>
+		<script type="text/javascript" src="{% static 'adminStatic/assets/js/jquery.fullcalendar.js' %}"></script>
+		<script type="text/javascript" src="{% static 'adminStatic/assets/js/jquery-ui.min.html' %}"></script>
+
+
+
+		<script src="{% static 'adminStatic/assets/plugins/datatables/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'adminStatic/assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+<script src="{% static 'adminStatic/assets/plugins/datatables-responsive/js/dataTables.responsive.min.js' %}"></script>
+<script src="{% static 'adminStatic/assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js' %}"></script>
+<script src="{% static 'adminStatic/assets/plugins/datatables-buttons/js/dataTables.buttons.min.js' %}"></script>
+<script src="{% static 'adminStatic/assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="{% static 'adminStatic/assets/plugins/jszip/jszip.min.js' %}"></script>
+<script src="{% static 'adminStatic/assets/plugins/pdfmake/pdfmake.min.js' %}"></script>
+<script src="{% static 'adminStatic/assets/plugins/pdfmake/vfs_fonts.js' %}"></script>
+<script src="{% static 'adminStatic/assets/plugins/datatables-buttons/js/buttons.html5.min.js' %}"></script>
+<script src="{% static 'adminStatic/assets/plugins/datatables-buttons/js/buttons.print.min.js' %}"></script>
+<script src="{% static 'adminStatic/assets/plugins/datatables-buttons/js/buttons.colVis.min.js' %}"></script>
+
+		<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
+
+
+
+    </body>
+</html>

@@ -1,0 +1,71 @@
+{% include 'employeeDashboard/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+
+                          <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong>Today's</strong> Work Upload
+                                    </div>
+                                    <div class="card-body card-block">
+                                        <form action="/saveWorkDone/" method="post" class="form-horizontal" enctype="multipart/form-data">
+                                            {% csrf_token %}
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">Date</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="date" name="date" placeholder="" class="form-control">
+                                                    <span class="help-block">Please enter date</span>
+                                                </div>
+                                            </div>
+                                               <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">Client</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <select name="clientId" id="SelectLm" class="form-control-sm form-control">
+                                                        <option>Select Client</option>
+                                                        {% for i in c %}
+                                                        <option value="{{i.clientId}}">{{i.fname}} {{i.lname}}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                    <span class="help-block">Please enter client</span>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="row form-group">
+                                                <div class="col col-md-3">
+                                                    <label class=" form-control-label">Work Description</label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <textarea name="workDone" rows="6" placeholder="Work Description..." class="form-control"></textarea>
+                                                    <span class="help-block">Please enter work details</span>
+                                                </div>
+                                            </div>
+                                            <div class="card-footer">
+                                        <input type="submit" class="btn btn-primary btn-sm">
+                                        <button type="reset" class="btn btn-danger btn-sm">
+                                            <i class="fa fa-ban"></i> Reset
+                                        </button>
+                                    </div>
+
+                                        </form>
+                                    </div>
+                                </div>
+
+
+
+
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

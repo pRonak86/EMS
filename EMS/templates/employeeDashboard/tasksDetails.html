@@ -1,0 +1,93 @@
+{% include 'employeeDashboard/base.html' %}
+{% load static %}
+{% block content %}
+	<div class="main-content">
+				<div class="section__content section__content--p30">
+                                    {% if not t%}
+                    				<div class="alert alert-primary" role="alert">
+                                        {{msg}}
+                                    </div>
+                                    {% endif %}
+                    <div class="container-fluid">
+						<div class="row">
+							<div class="col-lg-10">
+								<div class="card">
+									<div class="card-header">
+										<h4>Today's Tasks</h4>
+									</div>
+									<div class="card-body">
+											<div class="alert alert-primary" role="alert">
+											Good Morning {{fname}} {{lname}} !!
+									    	</div>
+										<div class="card-body card-block">
+                                        <form action="" method="post">
+                                            {% csrf_token %}
+                                            <div class="row">
+                                                {% if managerName %}
+                                                <div class="col-md-6">
+                                                      <div class="form-group">
+                                                          <label class="control-label mb-1">Manager Name</label>
+                                                          {% for i in managerName%}
+														  <input type="text" class="form-control mb-3" value="{{i.fname}} {{i.lname}}" readonly>
+                                                          {% endfor %}
+                                             		  </div>
+                                                </div>
+                                                {% endif %}
+                                                 <div class="col-md-6">
+                                                     {% if clientName %}
+                                                      <div class="form-group">
+                                                          <label class="form-label">Client Name</label>
+                                                           {% for i in clientName%}
+														  <input type="text" class="form-control mb-3" value="{{i.fname}} {{i.lname}}" readonly>
+                                                          {% endfor %}
+                                                      </div>
+                                                     {% endif %}
+                                                 </div>
+                                            </div>
+                                                <div class="row">
+                                                    {% if t %}
+                                                   <div class="col-md-12">
+                                                        <div class="form-group">
+                                                             <label class=" form-control-label">Project</label>
+                                                              {% for i in t %}
+                                        					  <input type="text" class="form-control mb-3" value="{{i.projectName}}" readonly>
+                                                        </div>
+                                                   </div>
+                                                </div>
+                                                 <div class="row">
+                                                   <div class="col-md-12">
+                                                        <div class="form-group">
+                                                             <label class=" form-control-label">Description</label>
+                                            		<div class="alert alert-secondary" role="alert">
+                                                    {{i.workDescription}}
+								            		</div>
+                                                        </div>
+                                                   </div>
+                                                 </div>
+                                                   <div class="row">
+                                                <div class="col-md-6">
+                                                      <div class="form-group">
+                                                          <label class="control-label mb-1">Date</label>
+                                                          <input type="text" class="form-control mb-3" value="{{i.date}}" readonly>
+                                                      </div>
+                                                </div>
+                                                       <div class="col-md-6">
+                                                      <div class="form-group">
+                                                          <label class="control-label mb-1">Documents</label>
+                                                          <input type="text" class="form-control mb-3" value="{{i.fileUpload}}" readonly>
+                                                      </div>
+                                                   </div>
+
+                                                       {% endfor %}
+                                                       {% endif %}
+                                            </div>
+                                        </div>
+
+								</div>
+							</div>
+                        </div>
+                    </div>
+                </div>
+
+
+{% endblock %}

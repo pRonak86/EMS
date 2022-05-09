@@ -1,0 +1,92 @@
+{% extends 'adminDashboard/base.html' %}
+{% block content %}
+           <div class="page-wrapper">
+                <div class="content container-fluid">
+					<div class="row">
+						<div class="col-md-6 col-sm-6 col-lg-3">
+							<div class="dash-widget clearfix card-box">
+								<span class="dash-widget-icon"><i class="fa fa-user" aria-hidden="true"></i></span>
+								<div class="dash-widget-info">
+									<h3>{{employee}}</h3>
+									<span>Employees</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-6 col-lg-3">
+							<div class="dash-widget clearfix card-box">
+								<span class="dash-widget-icon"><i class="fa fa-user" aria-hidden="true"></i></span>
+								<div class="dash-widget-info">
+									<h3>{{manager}}</h3>
+									<span>Managers</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-6 col-lg-3">
+							<div class="dash-widget clearfix card-box">
+								<span class="dash-widget-icon"><i class="fa fa-dollar"></i></span>
+								<div class="dash-widget-info">
+									<h3>{{clientTotal}}</h3>
+									<span>Clients</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-6 col-lg-3">
+							<div class="dash-widget clearfix card-box">
+								<span class="dash-widget-icon"><i class="fa fa-dollar" aria-hidden="true"></i></span>
+								<div class="dash-widget-info">
+									<h3>{{projectTotal}}</h3>
+									<span>Projects</span>
+								</div>
+							</div>
+						</div>
+					</div>
+			<div class="row">
+					<div class="col-md-6">
+							<div class="panel panel-table">
+								<div class="panel-heading">
+									<h3 class="panel-title">Recent Projects</h3>
+								</div>
+								<div class="panel-body">
+									<div class="table-responsive">
+										<table class="table table-striped custom-table m-b-0">
+											<thead>
+												<tr>
+													<th class="col-md-3">Project Name </th>
+													<th class="col-md-3">Dead Line</th>
+												</tr>
+											</thead>
+											<tbody>
+											{% for i in p%}
+												<tr>
+													<td>
+														<h2><a href="{% url 'projectProgressAdmin' pk=i.projectId %}">{{i.projectName}}</a></h2>
+														<small class="block text-ellipsis">
+															{% for i in m %}
+															<span class="text-xs">Team Leader</span> <span class="text-muted">{{i.fname}} {{i.lname}}</span>
+															{% endfor %}
+														</small>
+													</td>
+													<td>
+															<span>{{i.deadlineDate}}</span>
+													</td>
+												</tr>
+											{% endfor %}
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+					</div>
+
+					<div class="col-lg-6">
+							<div class="card-box m-b-0">
+								<div class="row">
+									<div class="col-md-12">
+										<div id="calendar"></div>
+									</div>
+								</div>
+							</div>
+					</div>
+
+
+{% endblock %}

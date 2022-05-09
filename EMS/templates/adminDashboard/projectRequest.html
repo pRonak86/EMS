@@ -1,0 +1,78 @@
+{% extends 'adminDashboard/base.html' %}
+{% load static %}
+{% block content %}
+
+   <div class="page-wrapper">
+                <div class="content container-fluid">
+					<div class="row">
+						<div class="col-sm-4">
+							<h4 class="page-title">Projects</h4>
+						</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="table-responsive">
+								<table class="table table-striped custom-table datatable">
+									<thead>
+										<tr>
+											<th>Project</th>
+											<th>Created Date</th>
+											<th>DeadLine</th>
+											<th>Cost</th>
+											<th>Leader</th>
+											<th>Team</th>
+											<th>Total Days</th>
+											<th>Status</th>
+										</tr>
+									</thead>
+									<tbody>
+									<tr>
+										{% if p %}
+										{% for i in  p %}
+										<td><a href="{% url 'projectView' pk=i.projectId %}">{{i.projectName}} </a></td>
+										<td>{{i.createdDate}}</td>
+										<td>{{i.deadlineDate}}</td>
+										<td>Rs {{i.cost}}</td>
+										<td>
+											{% for k in mng%}
+											<ul class="team-members">
+													<li>
+														<a href="#" data-toggle="tooltip" title="Team Leader"><img src="{% static 'adminStatic/assets/img/user.jpg' %}" alt="Jeffery Lalor"></a>
+													</li>
+											</ul>
+										</td>
+											{% endfor %}
+										<td>
+											{% for p in emp%}
+											<ul class="team-members">
+													<li>
+														<a href="#" data-toggle="tooltip" title="Team Members"><img src="{% static 'adminStatic/assets/img/user.jpg' %}" alt="Jeffery Lalor"></a>
+													</li>
+																<li>
+														<a href="#" data-toggle="tooltip" title="Team Members"><img src="{% static 'adminStatic/assets/img/user.jpg' %}" alt="Jeffery Lalor"></a>
+													</li>
+													<li>
+														<a href="#" data-toggle="tooltip" title="Team Members"><img src="{% static 'adminStatic/assets/img/user.jpg' %}" alt="Jeffery Lalor"></a>
+													</li>
+
+											</ul>
+											{% endfor %}
+										</td>
+										<td>{{i.totalDays}}</td>
+										<td> <span class="label label-success-border">{{i.status}}</span></td>
+									</tr>
+									{% endfor %}
+									{% endif %}
+
+
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+                </div>
+
+			</div>
+        </div>
+
+
+{% endblock %}

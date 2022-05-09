@@ -1,0 +1,55 @@
+{% include 'managerDashboard/base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+
+
+            <section class="welcome p-t-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1 class="title-2">Projects
+                            </h1>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="row">
+            {% for i in l %}
+              <div class="col-md-4">
+                                <div class="card">
+                                    <div class="card-header">
+                                            <small>
+                                                <span class="badge badge-success float-right mt-1">{{i.status}}</span>
+                                            </small>
+                                        <a href="{% url 'managerProjectView' pk=i.projectId %}">{{i.projectName}}</a>
+                                        </strong>
+                                    </div>
+                                    <div class="card-body">
+                                        <p class="card-text">
+                                            {{i.projectDescription}}
+                                        </p>
+                                        <hr>
+                                        <p>DeadLine </p>
+                                        <p>{{i.deadlineDate}}</p>
+                                        <hr>
+                                        <p>Client </p>
+                                        <p>{{cfname}} {{clname}}</p>
+                                    </div>
+                                </div>
+              </div>
+                  {% endfor %}
+                </div>
+
+
+
+
+        </div>
+    </div>
+</div>
+{% endblock %}

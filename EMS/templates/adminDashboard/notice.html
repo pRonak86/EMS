@@ -1,0 +1,34 @@
+{% extends 'adminDashboard/base.html' %}
+{% load static %}
+{% block content %}
+<div class="page-wrapper">
+    <div class="content container-fluid">
+
+           	<div class="row">
+						<div class="col-xs-4">
+							<h4 class="page-title">Notice</h4>
+						</div>
+					<hr>
+					</div>
+					<form action="/saveNotice/" method="post">
+						{% csrf_token %}
+				<div class="row">
+					<div class="col-md-10">
+						<div class="form-group">
+							<textarea rows="10" cols="60" class="form-control" name="notice">
+							</textarea>
+						</div>
+					</div>
+				</div>
+						<div class="row">
+							<div class="col-md-4">
+								<input type="submit" class="btn btn-success btn-block" value="Submit" />
+							</div>
+                    	</div>
+					</form>
+    </div>
+</div>
+
+
+
+{% endblock %}

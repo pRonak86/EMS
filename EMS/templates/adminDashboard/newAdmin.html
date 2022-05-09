@@ -1,0 +1,56 @@
+{% extends 'adminDashboard/base.html' %}
+{% load static %}
+{% block content %}
+
+     <div class="main-wrapper">
+			<div class="account-page">
+				<div class="container">
+					<h3 class="account-title">Add New Admin</h3>
+					<div class="account-box">
+						<div class="account-wrapper">
+							<div class="account-logo">
+								<a href="index.html"><img src="{% static 'adminStatic/assets/img/logo2.png' %}" alt="Focus Technologies"></a>
+							</div>
+							<form action="/saveAdmin/" method="post">
+								{% csrf_token %}
+								<div class="form-group form-focus">
+									<label class="control-label">First Name</label>
+									<input class="form-control floating" type="text" name="fname">
+								</div>
+                                <div class="form-group form-focus">
+									<label class="control-label">Last Name</label>
+									<input class="form-control floating" type="text" name="lname">
+								</div>
+                                <div class="form-group form-focus">
+									<label class="control-label">Contact</label>
+									<input class="form-control floating" type="text" name="contact">
+								</div>
+                                <div class="form-group form-focus">
+									<label class="control-label">Gender</label>
+                                    <select name="gender" class="form-control floating">
+                                        <option> </option>
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                    </select>
+								</div>
+								<div class="form-group form-focus">
+									<label class="control-label">Email</label>
+									<input class="form-control floating" type="text" name="email">
+								</div>
+								<div class="form-group form-focus">
+									<label class="control-label">Password</label>
+									<input class="form-control floating" type="password" name="password">
+								</div>
+								<div class="form-group text-center">
+									<button class="btn btn-primary btn-block account-btn" type="submit">Register</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+
+
+
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends 'adminDashboard/base.html' %}
+{% load static %}
+{% block content %}
+   <div class="page-wrapper">
+                <div class="content container-fluid">
+					<div class="row">
+						<div class="col-sm-8">
+							<h4 class="page-title">Client Profile</h4>
+						</div>
+										<div class="col-sm-4 text-right m-b-30">
+							<a href="{% url 'editClient' pk=ct.clientId %}" class="btn btn-primary rounded"><i class="fa fa-plus"></i> Edit Profile</a>
+						</div>
+
+					</div>
+					<div class="card-box">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="profile-view">
+									<div class="profile-img-wrap">
+										<div class="profile-img">
+											<a href="#"><img class="avatar" src="{{ct.image.url}}" alt=""></a>
+										</div>
+									</div>
+									<div class="profile-basic">
+										<div class="row">
+											<div class="col-md-5">
+												<div class="profile-info-left">
+													<h3 class="user-name m-t-0 m-b-0">{{ct.fname}} {{ct.lname}}</h3>
+													<small class="text-muted">Web Designer</small>
+													<div class="staff-id">Employee ID : {{ct.clientId}}</div>
+													<div class="staff-msg">
+													<form method="post" action="/assignManager/">
+														<input type="button" class="btn btn-custom" value="Send Message">
+													</div>
+												</div>
+											</div>
+											<div class="col-md-7">
+												<ul class="personal-info">
+													<li>
+														<span class="title">Phone:</span>
+														<span class="text"><a href="#">{{ct.phone}}</a></span>
+													</li>
+													<li>
+														<span class="title">Email:</span>
+														<span class="text"><a href="#">{{ct.emailId}}</a></span>
+													</li>
+													<li>
+														<span class="title">Company Name:</span>
+														<span class="text">{{ct.companyName}}</span>
+													</li>
+													<li>
+														<span class="title">Address:</span>
+														<span class="text">{{ct.companyAddress}}</span>
+													</li>
+													<li>
+														<span class="title">State:</span>
+														<span class="text">{{ct.companyState}}</span>
+													</li>
+													<li>
+														<span class="title">Description:</span>
+														<span class="text">{{ct.companyDescription}}</span>
+													</li>
+													</form>
+
+
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+									{% for i in cltProject %}
+									<div class="row">
+										<div class="col-lg-3 col-sm-4">
+											<div class="card-box project-box">
+												<h4 class="project-title"><a href="{% url 'projectView' pk=i.projectId %}">{{i.projectName}}</a></h4>
+												<hr>
+												<p class="text-muted">{{i.projectDescription}}
+												</p>
+												<div class="pro-deadline m-b-15">
+													<div class="sub-title">
+														Deadline:
+													</div>
+													<div class="text-muted">
+													{{i.totalDays}}
+													</div>
+												</div>
+												<div class="project-members m-b-15">
+													<div>Project Leader :</div>
+													<ul class="team-members">
+														<li>
+															<a href="#" data-toggle="tooltip" title={{i.managerId}}><img src="{% static 'adminStatic/assets/img/user.jpg' %}" alt="Jeffery Lalor"></a>
+														</li>
+													</ul>
+												</div>
+												<div class="project-members m-b-15">
+													<div>Team :</div>
+													<ul class="team-members">
+														<li>
+															<a href="#" data-toggle="tooltip" title="Mike Litorus"><img src="{% static 'adminStatic/assets/img/user.jpg' %}" alt="Mike Litorus"></a>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+									{% endfor %}
+				</div>
+				</div>
+		   </div>
+{% endblock %}

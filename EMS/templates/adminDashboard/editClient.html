@@ -1,0 +1,139 @@
+{% extends 'adminDashboard/base.html' %}
+{% load static %}
+{% block content %}
+
+  <div class="page-wrapper">
+                <div class="content container-fluid">
+					<div class="row">
+						<div class="col-sm-8">
+							<h4 class="page-title">Edit Profile</h4>
+						</div>
+					</div>
+					<form method="post" action="/updateClient/">
+						{% csrf_token %}
+						<div class="card-box">
+							<h3 class="card-title">Basic Informations</h3>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="profile-img-wrap">
+										<img class="inline-block" src="{{e.image.url}}" alt="user">
+										<div class="fileupload btn btn-default">
+											<span class="btn-text">edit</span>
+											<input class="upload" type="file">
+										</div>
+									</div>
+									<div class="profile-basic">
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group form-focus">
+												<label class="control-label">First Name</label>
+													<input type="text"  name="fname" class="form-control floating" value="{{e.fname}}" />
+													<input type="hidden" name="id" value="{{e.clientId}}">
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group form-focus">
+													<label class="control-label">Last Name</label>
+													<input type="text" name="lname" class="form-control floating" value="{{e.lname}}" />
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group form-focus">
+													<label class="control-label">Join Date</label>
+													<input name="joinDate" class="form-control floating" value="{{e.activation_Date}}" type="text" readonly>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group form-focus">
+													<label class="control-label">Gender</label>
+													<input name="gender" class="form-control floating" value="{{e.gender}}" type="text" readonly>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="card-box">
+							<h3 class="card-title">Company Details</h3>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group form-focus">
+				 						<label class="control-label">Company Name</label>
+										<input type="text" class="form-control floating" name="companyName" value="{{e.companyName}}"/>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group form-focus">
+										<label class="control-label">Company Address</label>
+										<input type="text" class="form-control floating" name="companyAddress" value="{{e.companyAddress}}"/>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group form-focus">
+										<label class="control-label">Company State</label>
+										<input type="text" class="form-control floating" name="companyState" value="{{e.companyState}}"/>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group form-focus">
+										<label class="control-label">Company Description</label>
+										<input type="text" class="form-control floating" name="companyDescription" value="{{e.companyDescription}}" />
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group form-focus">
+										<label class="control-label">Contact</label>
+										<input type="text" class="form-control floating"  name="phone" value="{{e.phone}}"/>
+									</div>
+								</div>
+							</div>
+						</div>
+	  						<div class="card-box">
+							<h3 class="card-title">Manager Details</h3>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group form-focus select-focus">
+										<label class="control-label">Manager Id</label>
+										<input type="text"  value="{{e.managerId}}" name="managerId" placeholder="Date Of Joining" class="form-control" />
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group form-focus select-focus">
+										<label class="control-label">Manager Name</label>
+										<input type="text" class="form-control" name="managerName" value="{{fname}} {{lname}}"/>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group form-focus select-focus">
+										<label class="control-label">Status</label>
+										<input type="text"  name="account" class="form-control floating" value="{{e.account}}"/>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="card-box">
+							<h3 class="card-title">Email Id and Password</h3>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group form-focus">
+										<label class="control-label">Email Id</label>
+										<input type="text"  name="email" class="form-control floating" value="{{e.emailId}}"/>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group form-focus">
+										<label class="control-label">Password</label>
+										<input type="text"  name="password" class="form-control floating" value="{{e.password}}"/>
+									</div>
+								</div>
+						</div>
+						<div class="text-center m-t-20">
+							<button class="btn btn-primary btn-lg" type="submit">Save &amp; update</button>
+						</div>
+					</form>
+				</div>
+
+
+{% endblock %}

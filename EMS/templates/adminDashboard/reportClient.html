@@ -1,0 +1,56 @@
+{% extends 'adminDashboard/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="page-wrapper">
+                <div class="content container-fluid">
+ <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Client Report</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                        <th style="width:18%;">Name</th>
+                        <th>Client Id</th>
+                        <th>Contact</th>
+                        <th>Address</th>
+                        <th>State</th>
+                        <th>Email Id</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                   </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                      {% for i in s %}
+                        <td>
+                          <a href="{% url 'clientProfile' pk=i.clientId %}" class="avatar">
+                              <img src="{{i.image.url}}" width="40" height="40" alt="" class="avatar">
+                          </a>
+                          <h2><a href="#">{{i.fname}} {{i.lname}}<span>{{i.companyName}}</span></a></h2>
+                        </td>
+                        <td>{{i.clientId}}</td>
+                        <td>{{i.phone}}</td>
+                        <td>{{i.companyAddress }}</td>
+                        <td>{{i.companyState }}</td>
+                        <td>{{i.emailId }}</td>
+                        <td>{{i.companyDescription}}</td>
+                      <td><span class="label label-success-border">{{i.account}}</span></td>
+						</tr>
+                        {% endfor %}
+
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+                </div>
+</div>
+
+
+
+{% endblock %}

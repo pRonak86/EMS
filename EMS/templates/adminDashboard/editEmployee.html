@@ -1,0 +1,150 @@
+{% extends 'adminDashboard/base.html' %}
+{% load static %}
+{% block content %}
+
+  <div class="page-wrapper">
+                <div class="content container-fluid">
+					<div class="row">
+						<div class="col-sm-8">
+							<h4 class="page-title">Edit Profile</h4>
+						</div>
+					</div>
+					<form method="post" action="/updateEmployee/">
+						{% csrf_token %}
+						<div class="card-box">
+							<h3 class="card-title">Basic Informations</h3>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="profile-img-wrap">
+										<img class="inline-block" src="{{e.image.url}}" alt="user" name="image">
+										<div class="fileupload btn btn-default">
+											<span class="btn-text">edit</span>
+											<input class="upload" type="file" name="image">
+										</div>
+									</div>
+									<div class="profile-basic">
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group form-focus select-focus">
+													<label class="control-label">First Name</label>
+													<input type="text"  name="fname" class="form-control floating" value="{{e.fname}}" />
+													<input type="hidden" name="id" value="{{e.empCode}}">
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group  form-focus select-focus">
+													<label class="control-label">Last Name</label>
+													<input type="text" name="lname" class="form-control floating" value="{{e.lname}}" />
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group form-focus select-focus">
+													<label class="control-label">Birth Date</label>
+													<input name="dob" class="form-control floating" value="{{e.dob}}" type="text" readonly>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group form-focus select-focus">
+													<label class="control-label">Gender</label>
+													<input name="gender" class="form-control floating" value="{{e.gender}}" type="text" readonly>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="card-box">
+							<h3 class="card-title">Contact Informations</h3>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="form-group form-focus select-focus">
+										<label class="control-label">Address</label>
+										<input type="text" class="form-control floating" name="address" value="{{e.address}}"/>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group form-focus select-focus">
+										<label class="control-label">State</label>
+										<input type="text" class="form-control floating" name="state" value="{{e.state}}"/>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group form-focus select-focus">
+										<label class="control-label">Blood Group</label>
+										<input type="text" class="form-control floating" name="bloodGroup" value="{{e.bloodGroup}}"/>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group form-focus select-focus">
+										<label class="control-label">Qualification</label>
+										<input type="text" class="form-control floating" name="qualification" value="{{e.qualification}}" />
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group form-focus  select-focus">
+										<label class="control-label">Contact</label>
+										<input type="text" class="form-control floating"  name="phone" value="{{e.contact}}"/>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="card-box">
+							<h3 class="card-title">Company Details</h3>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group form-focus select-focus">
+										<label class="control-label">Joining Date</label>
+										<input type="text"   value="{{e.joinDate}}" name="joinDate" placeholder="Date Of Joining" class="form-control" readonly />
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group form-focus select-focus">
+										<label class="control-label">Salary</label>
+										<input type="text" name="salary" class="form-control" value="{{e.salary}}"/>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group form-focus select-focus">
+										<label class="control-label">Leave</label>
+										<input type="text" name="leave" class="form-control" value="{{e.leave}}"/>
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="form-group form-focus select-focus">
+										<label class="control-label">Manager Name</label>
+										<input type="text"  name="managerName"   class="form-control floating" value="{{fname}} {{lname}}"/>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group form-focus select-focus">
+										<label class="control-label">Statuc</label>
+										<input type="text"  name="account" class="form-control floating" value="{{e.account}}"/>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="card-box">
+							<h3 class="card-title">Email Id and Password</h3>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group form-focus select-focus">
+										<label class="control-label">Email Id</label>
+										<input type="text"  name="email" class="form-control floating" value="{{e.emailId}}"/>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group form-focus select-focus">
+										<label class="control-label">Password</label>
+										<input type="text"  name="password" class="form-control floating" value="{{e.password}}"/>
+									</div>
+								</div>
+						<div class="text-center m-t-20">
+							<button class="btn btn-primary btn-lg" type="submit">Save &amp; update</button>
+						</div>
+					</form>
+				</div>
+
+
+{% endblock %}
